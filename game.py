@@ -26,7 +26,7 @@ class Game():
         pass
 
     def _draw(self):
-        self.game_surface.fill('#40739e')
+        self.game_surface.fill('#00d2d3')
         self.default_surface.fill('#2f3640')
         self.default_surface.blit(self.game_surface, (0, 0))
 
