@@ -2,9 +2,6 @@ import pygame as pg, sys
 from config import Config
 from helper import Helper
 
-from particle import Particle
-from random import randint
-
 class Game():
 
     def __init__(self, title, show_fps = False):
