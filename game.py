@@ -59,6 +59,7 @@ class Game():
             self.draw()
 
             self._after_draw()
+            self.before_flip()
 
             pg.display.flip()
 
@@ -75,4 +76,7 @@ class Game():
         pass
 
     def update(self):
+        pass
+
+    def before_flip(self):
         pass
