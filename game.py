@@ -2,6 +2,9 @@ import pygame as pg, sys
 from config import Config
 from helper import Helper
 
+from particle import Particle
+from random import randint
+
 class Game():
 
     def __init__(self, title, show_fps = False):
@@ -15,6 +18,7 @@ class Game():
         self.delta_time = 0
         self.fps = 0
         self.clock = pg.time.Clock()
+        self.mouse_pos = (0, 0)
 
         self.title = title
         self.show_fps = show_fps
@@ -28,12 +32,15 @@ class Game():
     def _draw(self):
         self.game_surface.fill('#00d2d3')
         self.default_surface.fill('#2f3640')
+
+    def _after_draw(self):
         self.default_surface.blit(self.game_surface, (0, 0))
 
     def _update(self):
         self.helper.change_title(f"{self.title} | ({int(self.fps)})" if self.show_fps else self.title)
 
     def _input(self):
+        self.mouse_pos = pg.mouse.get_pos()
         for evt in self.event:
             if evt.type == pg.QUIT or (evt.type == pg.KEYDOWN and evt.key == pg.K_ESCAPE):
                 self.game_run = False
@@ -50,6 +57,8 @@ class Game():
 
             self._draw()
             self.draw()
+
+            self._after_draw()
 
             pg.display.flip()
 
