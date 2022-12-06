@@ -23,9 +23,9 @@ class Player():
         self.position += self.move * self.speed * self.game.delta_time
         self.rect.center = round(self.position.x), round(self.position.y)
 
-    def draw(self):
-        self.game.game_surface.blit(self.image, self.rect)
-
     def update(self):
         self._input()
         self._move()
+
+    def draw(self):
+        self.game.game_surface.blit(self.image, self.rect)

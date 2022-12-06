@@ -29,15 +29,15 @@ class Game():
     def _setup(self):
         pass
 
+    def _update(self):
+        self.helper.change_title(f"{self.title} | ({int(self.fps)})" if self.show_fps else self.title)
+
     def _draw(self):
         self.game_surface.fill('#00d2d3')
         self.default_surface.fill('#2f3640')
 
     def _after_draw(self):
         self.default_surface.blit(self.game_surface, (0, 0))
-
-    def _update(self):
-        self.helper.change_title(f"{self.title} | ({int(self.fps)})" if self.show_fps else self.title)
 
     def _delta_time(self):
         tick = pg.time.get_ticks()
@@ -79,11 +79,11 @@ class Game():
         self.player = Player(self, self.config.HALFSCREEN)
         self.level1 = Level1(self)
 
-    def draw(self):
-        self.level1.draw()
-
     def update(self):
         self.level1.update()
+
+    def draw(self):
+        self.level1.draw()
 
     def before_flip(self):
         pass

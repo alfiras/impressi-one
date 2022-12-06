@@ -18,10 +18,6 @@ class Particle():
     def destroy(self, particle):
         self.particles.remove(particle)
 
-    def draw(self):
-        for particle in self.particles:
-            pg.draw.circle(self.game.game_surface, '#3d3d3d', (int(particle['pos'][0]), int(particle['pos'][1])), int(particle['width']))
-
     def update(self):
         for particle in self.particles:
             particle['pos'][0] += particle['multiplier'][0]
@@ -31,6 +27,10 @@ class Particle():
 
             if particle['width'] <= 0:
                 self.destroy(particle)
+
+    def draw(self):
+        for particle in self.particles:
+            pg.draw.circle(self.game.game_surface, '#3d3d3d', (int(particle['pos'][0]), int(particle['pos'][1])), int(particle['width']))
 
     def create_and_update(self, x, y, mx, my, w):
         self.create(x, y, mx, my, w)
